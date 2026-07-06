@@ -1,7 +1,7 @@
 {
   "Uuid": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "IsCustomNode": false,
-  "Description": "Place multiple section views on Revit sheets in a configurable grid layout using only visual nodes - no Python required",
+  "Description": "Place multiple section views on Revit sheets in a configurable grid layout using only visual nodes - FULLY CONNECTED",
   "Name": "Place_Sections_On_Sheets_Grid",
   "ElementResolver": {
     "ResolutionMap": {}
@@ -125,7 +125,7 @@
       "IsVisible": true,
       "IsUpstreamVisible": true,
       "UpstreamNodeIds": ["1"],
-      "DownstreamNodeIds": ["14"],
+      "DownstreamNodeIds": ["14", "11"],
       "Excluded": false,
       "HasUI": false,
       "Frozen": false,
@@ -249,7 +249,7 @@
       "IsVisible": true,
       "IsUpstreamVisible": true,
       "UpstreamNodeIds": ["4"],
-      "DownstreamNodeIds": ["6"],
+      "DownstreamNodeIds": ["6", "9"],
       "Excluded": false,
       "HasUI": false,
       "Frozen": false,
@@ -559,12 +559,12 @@
       ],
       "Replication": "Disabled",
       "Description": "Calculate viewport positions for grid layout",
-      "Code": "// Calculate grid positions for multiple sections\nsectionCount = Count(sections);\nmaxCols = 2;\nrows = Math.Ceiling(sectionCount / maxCols);\n\npositions = [];\ncol = 0;\nrow = 0;\n\nfor(i in 0..sectionCount-1)\n{\n  x = config.startX + (col * config.spacingX);\n  y = config.startY - (row * config.spacingY);\n  positions = Append(positions, [x, y]);\n  col = col + 1;\n  \n  if(col >= config.maxCols)\n  {\n    col = 0;\n    row = row + 1;\n  }\n};\n\npositions;",
+      "Code": "// Calculate grid positions for multiple sections\nsectionCount = Count(sections);\nmaxCols = config.maxCols;\nrows = Math.Ceiling(sectionCount / maxCols);\n\npositions = [];\ncol = 0;\nrow = 0;\n\nfor(i in 0..sectionCount-1)\n{\n  x = config.startX + (col * config.spacingX);\n  y = config.startY - (row * config.spacingY);\n  positions = Append(positions, [x, y]);\n  col = col + 1;\n  \n  if(col >= config.maxCols)\n  {\n    col = 0;\n    row = row + 1;\n  }\n};\n\npositions;",
       "X": 800.0,
       "Y": 150.0,
       "IsVisible": true,
       "IsUpstreamVisible": true,
-      "UpstreamNodeIds": ["9", "2", "10"],
+      "UpstreamNodeIds": ["9", "2", "12"],
       "DownstreamNodeIds": ["13"],
       "Excluded": false,
       "HasUI": false,
@@ -610,7 +610,7 @@
       "HasUI": false,
       "Frozen": false,
       "UsingDefaultValue": false,
-      "Name": "Code Block",
+      "Name": "Pass Config",
       "ElementResolver": null
     },
     {
@@ -773,6 +773,11 @@
       "Id": "conn3"
     },
     {
+      "Start": "2",
+      "End": "11",
+      "Id": "conn3b"
+    },
+    {
       "Start": "3",
       "End": "4",
       "Id": "conn4"
@@ -786,6 +791,11 @@
       "Start": "5",
       "End": "6",
       "Id": "conn6"
+    },
+    {
+      "Start": "5",
+      "End": "9",
+      "Id": "conn6b"
     },
     {
       "Start": "6",
@@ -818,11 +828,6 @@
       "Id": "conn12"
     },
     {
-      "Start": "2",
-      "End": "11",
-      "Id": "conn13"
-    },
-    {
       "Start": "11",
       "End": "13",
       "Id": "conn14"
@@ -836,6 +841,6 @@
   "Dependencies": [],
   "NodeLibraryDependencies": [],
   "Author": "Muhammad Hindichristine",
-  "Description": "Place multiple section views on Revit sheets in a configurable grid layout using only visual nodes - no Python required",
+  "Description": "Place multiple section views on Revit sheets in a configurable grid layout using only visual nodes - FULLY CONNECTED AND READY TO RUN",
   "Name": "Place_Sections_On_Sheets_Grid"
 }
