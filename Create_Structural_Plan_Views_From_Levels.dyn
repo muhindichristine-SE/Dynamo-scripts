@@ -1,0 +1,425 @@
+{
+  "Uuid": "345bf578-06f8-440e-9d1a-720f4a32c6a0",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Create_Structural_Plan_Views_From_Levels",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "d085c8f72f374afd829db628a90c99eb",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "bbe5f4a0e56f4b8b9cdb0c58a2cac1e6",
+          "Name": "level",
+          "Description": "The Level on which the StructuralPlanView is based.\n\nLevel",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "002a34596a7b4782b6652d53cd353a55",
+          "Name": "StructuralPlanView",
+          "Description": "A StructuralPlanView if successful.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Views.StructuralPlanView.ByLevel@Revit.Elements.Level",
+      "Replication": "Auto",
+      "Description": "Create a Structural Plan View at the given Level.\n\nStructuralPlanView.ByLevel (level: Level): StructuralPlanView"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "dc4bf43303a449fba8b4589e2dd7a434",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "cecfc088b6b740eca0e0fe141e8c8e8d",
+          "Name": "Category",
+          "Description": "The Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3da91fcf7c3f4cebbfc9f654352a6806",
+          "Name": "Elements",
+          "Description": "An element class.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get all elements of the specified category from the model."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "6ffca8d1f51e42c39d50f968a5723026",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "860b2e564c284327a6ad4ab5e5a1e309",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "\"Levels\";"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "8b5beb7f41b84664b73822f9d94e3832",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "27e81b6218e54971bc1e66e255012021",
+          "Name": "name",
+          "Description": "The built in category name.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4d89e64becfe4b3e8fcac68b847b6937",
+          "Name": "Category",
+          "Description": "Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Category.ByName@string",
+      "Replication": "Auto",
+      "Description": "Gets a Revit category by the built-in category name.\n\nCategory.ByName (name: string): Category"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 38.0,
+      "Id": "f794cc378331477c981090e3f869f429",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "9730b7b9bca24bb8bb8491fe6fada1db",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e5347aad20849eba23a441799479083",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualizes a node's output"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3da91fcf7c3f4cebbfc9f654352a6806",
+      "End": "bbe5f4a0e56f4b8b9cdb0c58a2cac1e6",
+      "Id": "5f8a3dead01647efa948756545e21861",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "3da91fcf7c3f4cebbfc9f654352a6806",
+      "End": "9730b7b9bca24bb8bb8491fe6fada1db",
+      "Id": "42f6b4851f834c0faa111443e14111e5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "860b2e564c284327a6ad4ab5e5a1e309",
+      "End": "27e81b6218e54971bc1e66e255012021",
+      "Id": "8a21c4c71b3047e780c4c4d29a9e60cf",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4d89e64becfe4b3e8fcac68b847b6937",
+      "End": "cecfc088b6b740eca0e0fe141e8c8e8d",
+      "Id": "5d8d15a9887640c69bff234c399a9b7a",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "EnableLegacyPolyCurveBehavior": false,
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [
+    {
+      "NodeId": "d085c8f7-2f37-4afd-829d-b628a90c99eb",
+      "Binding": {
+        "ByLevel_InClassDecl-1_InFunctionScope-1_Instance0_d085c8f7-2f37-4afd-829d-b628a90c99eb": "H4sIAAAAAAAACq3Tq5LDMAyF4XcRbmbkWPGluKR4YV3gxEqnJGA3LJN335lAix4mog/953XQpn+7tkfdK91fB7XroKPQz/773T7PR6F7oXGNdck+DjK7ZRDf4jA3XYegGqSq5inzwMwhr24pdCv03PbrV7zPkk46bwh8DAafYLhngwccXg0eYbiIwRMOV4NnGD6lDhdmGB5Ggzsc3ncuPMLw2Hcu7GF46jsXxi009Z0L4xaa+86FcQvNfefCuIVW2zluobPtHLfQ2XTucAtdTOcOt9BmOne4hTbTucMtVE3nDrdQNZ27a6Hv8/0PauHmCBAIAAA="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "3.3.0.6316",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "d085c8f72f374afd829db628a90c99eb",
+        "Name": "StructuralPlanView.ByLevel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1583.6806661595576,
+        "Y": -42.72557950309806
+      },
+      {
+        "Id": "dc4bf43303a449fba8b4589e2dd7a434",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 758.3682600399741,
+        "Y": -58.05907939302108
+      },
+      {
+        "Id": "6ffca8d1f51e42c39d50f968a5723026",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 158.80378631784936,
+        "Y": -91.91816478183785
+      },
+      {
+        "Id": "8b5beb7f41b84664b73822f9d94e3832",
+        "Name": "Category.ByName",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 397.4853310804822,
+        "Y": -60.86752212173246
+      },
+      {
+        "Id": "f794cc378331477c981090e3f869f429",
+        "Name": "Watch",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1047.098751224117,
+        "Y": 82.54970910569216
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "f0eefe2a80e643d890d4eaa855a199a4",
+        "Title": "Step 1: Find all Levels in the model",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "dc4bf43303a449fba8b4589e2dd7a434",
+          "6ffca8d1f51e42c39d50f968a5723026",
+          "8b5beb7f41b84664b73822f9d94e3832",
+          "f794cc378331477c981090e3f869f429"
+        ],
+        "HasNestedGroups": false,
+        "Left": 148.80378631784936,
+        "Top": -164.91816478183785,
+        "Width": 1185.2949649062675,
+        "Height": 383.46787388753,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -91.91816478183785,
+        "InitialHeight": 195.85908538881677,
+        "TextblockHeight": 63.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "495f975da54e4e67853f1d830c6f5533",
+        "Title": "Step 2: Make a structural plan view for each Level",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 120.91419209192918,
+        "HeightAdjustment": 48.18021043476165,
+        "Nodes": [
+          "d085c8f72f374afd829db628a90c99eb"
+        ],
+        "HasNestedGroups": false,
+        "Left": 1573.6806661595576,
+        "Top": -158.72557950309806,
+        "Width": 419.9141920919292,
+        "Height": 296.18021043476165,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -42.72557950309806,
+        "InitialHeight": 162.0,
+        "TextblockHeight": 106.0,
+        "Background": "#FFFFC999"
+      },
+      {
+        "Id": "a84a73f8ccdc4071a96106860c60bc6d",
+        "Title": "What this does: Makes a structural plan view for every Level in the model.\n\nBefore you run: Make sure the arch levels have been copy/monitored into this project first. Check the Watch box to see which Levels will get views.\n\nWarning: This makes a view for every Level, including parapet and T.O. Steel levels. Delete any you don't want afterwards. Running it twice will error on Levels that already have a view.",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 697.6805205448217,
+        "HeightAdjustment": 2.134914150759869,
+        "Nodes": [
+          "1f513897de4248718b80b23ee42a5ee1"
+        ],
+        "HasNestedGroups": false,
+        "Left": 525.7738240118972,
+        "Top": -1060.4330592799624,
+        "Width": 777.6805205448217,
+        "Height": 599.1349141507599,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -512.4330592799624,
+        "InitialHeight": 79.0,
+        "TextblockHeight": 538.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "4b630272e8e141f888749e3ab8fb4826",
+        "Title": "HOW TO USE:",
+        "DescriptionText": "",
+        "IsExpanded": true,
+        "WidthAdjustment": 37.62040746915318,
+        "HeightAdjustment": 50.48249103118053,
+        "Nodes": [
+          "7f7b7b69f7fb4805b9393d30ebb1e0d7",
+          "a84a73f8ccdc4071a96106860c60bc6d"
+        ],
+        "HasNestedGroups": true,
+        "Left": 392.3101262922462,
+        "Top": -1138.2581325923134,
+        "Width": 958.7646257336257,
+        "Height": 742.4424784942913,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1065.2581325923134,
+        "InitialHeight": 79.0,
+        "TextblockHeight": 63.0,
+        "Background": "#FFB5B5B5"
+      },
+      {
+        "Id": "1f513897de4248718b80b23ee42a5ee1",
+        "Title": "Note 1",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": 535.7738240118972,
+        "Top": -504.43305927996244,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "7f7b7b69f7fb4805b9393d30ebb1e0d7",
+        "Title": "",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [],
+        "HasNestedGroups": false,
+        "Left": 402.3101262922462,
+        "Top": -1057.2581325923134,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 407.3909404558261,
+    "Y": 767.6973830089261,
+    "Zoom": 0.5037814863210861
+  }
+}
