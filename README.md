@@ -134,4 +134,4 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ## Author
 
-Christine Muhindi — Structural Engineering
+Christine Muhindi — BIM TECHNICIAN
